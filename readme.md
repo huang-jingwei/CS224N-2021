@@ -10,7 +10,8 @@
 
 # 2021年课程作业
 
-2021年的课程安排：https://github.com/huang-jingwei/CS224N-2021
+- 2021年的课程安排：https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1214/
+- 视频链接[bilibili]：https://www.bilibili.com/video/BV18Y411p79k
 
 ## Assignment 1：词向量介绍
 
