@@ -1,21 +1,20 @@
-# CS224N
-
-
-
-
-
-课程主页：http://web.stanford.edu/class/cs224n/
-
-
-
 # CS224N-2021
 
-- 2021年的课程安排：https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1214/
-- 视频链接[bilibili]：https://www.bilibili.com/video/BV18Y411p79k
+## HomePage
+
+- CS224N 课程主页：http://web.stanford.edu/class/cs224n/
+
+- CS224N-2021 课程安排：https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1214/
+
+## Video
+
+- 2017视频链接[bilibili]：https://www.bilibili.com/video/BV1pt411h7aT
+
+- 2021视频链接[bilibili]：https://www.bilibili.com/video/BV18Y411p79k
 
 ## Assignment 
 
-
+## 
 
 - [x] [Assignment 1：词向量介绍](https://github.com/huang-jingwei/CS224N-2021/tree/main/Assignment%201)
 - [ ] Assignment 2：实现word2vec 算法
