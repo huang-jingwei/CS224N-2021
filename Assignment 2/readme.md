@@ -1,13 +1,6 @@
-$$
+# CS224N-2021 Assignment 2:Word2vec
 
-$$
-
-
-
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are 
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+完整解答过程请阅览PDF文件。
 
 
-$$
-x = {-b \pm \sqrt{b^2-4ac} \over 2a}
-$$
+
