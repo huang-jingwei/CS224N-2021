@@ -1,6 +1,14 @@
-# CS224N-2021 Assignment 2:Word2vec
+# Assignment 2:Word2vec
 
-完整解答过程请阅览PDF文件。
+## 1、Written
+
+Written: Understanding word2vec的解答过程请查阅answer文件夹
+
+
+
+## 2、Coding
+
+Coding: Implementing word2vec
 
 
 
