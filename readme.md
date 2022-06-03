@@ -14,8 +14,6 @@
 
 ## Assignment 
 
-## 
-
 - [x] [Assignment 1：词向量介绍](https://github.com/huang-jingwei/CS224N-2021/tree/main/Assignment%201)
 - [x] [Assignment 2：实现word2vec 算法](https://github.com/huang-jingwei/CS224N-2021/tree/main/Assignment%202)
 - [ ] Assignment 3：依赖解析和神经网络基础
