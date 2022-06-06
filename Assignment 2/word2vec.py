@@ -18,7 +18,7 @@ def sigmoid(x):
     """
 
     ### YOUR CODE HERE (~1 Line)
-
+    s = np.exp(x) / (np.exp(x)+1.0)
     ### END YOUR CODE
 
     return s
@@ -64,6 +64,11 @@ def naiveSoftmaxLossAndGradient(
     ### Please use the provided softmax function (imported earlier in this file)
     ### This numerically stable implementation helps you avoid issues pertaining
     ### to integer overflow. 
+    y_hat = softmax(np.dot(outsideVectors, centerWordVec))
+    loss = -np.log(y_hat[outsideWordIdx])
+    y_hat[outsideWordIdx] -= 1
+    gradCenterVec = np.dot(outsideVectors.T, y_hat)
+    gradOutsideVecs = np.dot(np.expand_dims(y_hat, axis=1), np.expand_dims(centerWordVec, axis=0))
 
     ### END YOUR CODE
 
@@ -111,7 +116,17 @@ def negSamplingLossAndGradient(
     ### YOUR CODE HERE (~10 Lines)
 
     ### Please use your implementation of sigmoid in here.
+    u_o_v_c = np.dot(outsideVectors[outsideWordIdx].T, centerWordVec)
+    u_k_v_c = -np.dot(outsideVectors[negSampleWordIndices], centerWordVec)
+    loss = -np.log(sigmoid(u_o_v_c)) - np.sum(np.log(sigmoid(u_k_v_c)))
 
+    gradCenterVec = -(1-sigmoid(u_o_v_c)) * outsideVectors[outsideWordIdx] \
+        + np.sum(np.expand_dims((1-sigmoid(u_k_v_c)), axis=1) * outsideVectors[negSampleWordIndices], axis=0)
+
+    gradOutsideVecs = np.zeros(outsideVectors.shape)
+    gradOutsideVecs[outsideWordIdx] = -(1-sigmoid(u_o_v_c)) * centerWordVec
+    for idx, u_k_idx in enumerate(negSampleWordIndices):
+        gradOutsideVecs[u_k_idx] += (1 - sigmoid(u_k_v_c[idx])) * centerWordVec
     ### END YOUR CODE
 
     return loss, gradCenterVec, gradOutsideVecs
@@ -153,11 +168,17 @@ def skipgram(currentCenterWord, windowSize, outsideWords, word2Ind,
     """
 
     loss = 0.0
-    gradCenterVecs = np.zeros(centerWordVectors.shape)
-    gradOutsideVectors = np.zeros(outsideVectors.shape)
+    gradCenterVecs = np.zeros(centerWordVectors.shape) # (n,d)
+    gradOutsideVectors = np.zeros(outsideVectors.shape) # (n, d)
 
     ### YOUR CODE HERE (~8 Lines)
-
+    for word in outsideWords:
+        loss_, gradC, gradO = word2vecLossAndGradient(
+            centerWordVectors[word2Ind[currentCenterWord]], word2Ind[word], outsideVectors, dataset)
+        loss += loss_ 
+        gradCenterVecs[word2Ind[currentCenterWord]] += gradC
+        gradOutsideVectors += gradO
+    # 梯度和偏导向量的shape是一致的
     ### END YOUR CODE
     
     return loss, gradCenterVecs, gradOutsideVectors
