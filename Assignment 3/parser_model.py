@@ -73,8 +73,13 @@ class ParserModel(nn.Module):
         ### 
         ### See the PDF for hints.
 
+        self.embed_to_hidden_weight=nn.init.xavier_uniform_(nn.Parameter(torch.rand(self.embed_size,self.hidden_size)))
+        self.embed_to_hidden_bias=nn.init.uniform_(nn.Parameter(torch.rand(self.hidden_size)))
 
+        self.dropout = nn.Dropout(p=self.dropout_prob)
 
+        self.hidden_to_logits_weight=nn.init.xavier_uniform_(nn.Parameter(torch.rand(self.hidden_size,self.n_classes)))
+        self.hidden_to_logits_bias=nn.init.uniform_(nn.Parameter(torch.rand(self.n_classes)))
 
         ### END YOUR CODE
 
@@ -143,7 +148,12 @@ class ParserModel(nn.Module):
         ### Please see the following docs for support:
         ###     Matrix product: https://pytorch.org/docs/stable/torch.html#torch.matmul
         ###     ReLU: https://pytorch.org/docs/stable/nn.html?highlight=relu#torch.nn.functional.relu
+        hidden=torch.mm(self.embeddings,self.self.embed_to_hidden_weight)+self.embed_to_hidden_bias
+        hidden_relu=nn.Relu(hidden)
+        h=self.dropout(hidden_relu)
 
+        output=torch.mm(h,self.hidden_to_logits_weight)+self.hidden_to_logits_bias
+        logits=nn.Softmax(output,dim=-1)
 
         ### END YOUR CODE
         return logits
