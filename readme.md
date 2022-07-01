@@ -16,7 +16,7 @@
 
 - [x] [Assignment 1：词向量介绍](https://github.com/huang-jingwei/CS224N-2021/tree/main/Assignment%201)
 - [x] [Assignment 2：实现word2vec 算法](https://github.com/huang-jingwei/CS224N-2021/tree/main/Assignment%202)
-- [ ] Assignment 3：依赖解析和神经网络基础
+- [x] [Assignment 3：依赖解析和神经网络基础](https://github.com/huang-jingwei/CS224N-2021/tree/main/Assignment%203)
 - [ ] Assignment 4：具有序列到序列、注意力和子词的神经机器翻译
 - [ ] Assignment 5：使用 Transformers 进行自我监督学习和微调
 
